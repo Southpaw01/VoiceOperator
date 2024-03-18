@@ -11,7 +11,7 @@ namespace VoiceOperator.Speech
 {
     public class SpeechToText
     {
-        static string modelPath = "C:\\Users\\Илья Петров\\Desktop\\Diplom\\model_small";
+        static string modelPath = "..\\..\\..\\model";
         static Model model = new Model(modelPath);
 
         VoskRecognizer recognizer = new VoskRecognizer(model, 48000.0f);
