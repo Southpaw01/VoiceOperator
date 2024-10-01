@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="VoiceOperator.View.StartView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VoiceOperator.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             xmlns:vm="clr-namespace:VoiceOperator.ViewModel">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid Margin="20"> 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            
+        </Grid.ColumnDefinitions>
+        
+        <Label Content="Регламент переговоров" HorizontalAlignment="Center" FontSize="25"/>
+        <Grid Grid.Row="1" Margin="0,15,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+            <StackPanel IsEnabled="true">
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding IsTraining}" Style="{StaticResource CheckBox}"/>
+                    <Label Content="Режим обучения" FontWeight="Bold"/>
+                </StackPanel>
+
+                <StackPanel  Margin="20,0,0,0">
+                    <Label Content="- Результаты не учитываются в статистике"/>
+                    <Label Content="- Количество попыток не ограничено"/>
+                    <Label Content="- Можно посмотреть правильный ответ"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1">
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding IsTesting}" Style="{StaticResource CheckBox}"/>
+                    <Label Content="Режим тестирования" FontWeight="Bold"/>
+                </StackPanel>
+
+                <StackPanel Margin="20,0,0,0">
+                    <Label Content="- Результаты учитываются в статистике"/>
+                    <Label Content="- Одна попытка"/>
+                    <Label Content="- Правильный ответ выводится только после использования попытки"/>
+                </StackPanel>
+            </StackPanel>
+
+            <Button Grid.Row="2" Margin="0,20,0,0" Height="25"  Content="Начать" Command="{Binding StartCommand}" IsEnabled="{Binding IsCanStart}"/>
+        </Grid>
+    </Grid>
+    </Border>
+</UserControl>

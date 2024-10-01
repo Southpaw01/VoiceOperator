@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="Admin.View.DetailStatsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Admin.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../MessagesDataTemplates.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+
+    <Grid x:Name="gr" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label Content="Набрано" FontSize="25"/>
+            <Label Content="{Binding ActualScores}" FontSize="25"/>
+            <Label Content=" из " FontSize="25"/>
+            <Label Content="{Binding ExpectedScores}" FontSize="25"/>
+            <Label Content="возможных баллов" FontSize="25"/>
+        </StackPanel>
+
+        <ScrollViewer  Grid.Row="1" Margin="0,0,0,5">
+            <ItemsControl ItemsSource="{Binding DialogsViewModel}" HorizontalContentAlignment="Center">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch" Margin="20,0,20,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                                <Label Content="{Binding Num}" Padding="0" FontSize="20"/>
+                                <Label Content=" (" Padding="0" FontSize="20"/>
+                                <Label Content="{Binding ActualScores}" Padding="0" FontSize="20"/>
+                                <Label Content=" из " Padding="0" FontSize="20"/>
+                                <Label Content="{Binding ExpectedScores}" Padding="0" FontSize="20"/>
+                                <Label Content=")" Padding="0" FontSize="20"/>
+                            </StackPanel>
+
+                            <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                                <ContentControl ContentTemplate="{StaticResource Dialog}" Content="{Binding}"/>
+                            </Border>
+
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
